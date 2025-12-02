@@ -1,0 +1,71 @@
+import os
+import random
+import subprocess
+import time
+import star
+MASTER_BRIGHTNESS = .5
+
+PYTHON = '/home/administrator/venv/bin/python'
+RUN_TIME = 30     # seconds per script
+FADE_FRAMES = 20    # number of steps to fade between effects
+
+current_script = os.path.basename(__file__)
+ROOT_DIR = 'tree/programs/codeFiles'
+
+
+# Star code
+def apply_star(strip, star_count=15):
+    """Force the top `star_count` LEDs to always be yellow"""
+    for i in range(strip.numPixels() - star_count, strip.numPixels()):
+        strip.setPixelColor(i, Color(255, 255, 0))  # yellow
+    strip.show()
+
+
+# Collect all scripts, ignoring this master script and off.py
+py_files = []
+for root, dirs, files in os.walk(ROOT_DIR):
+    for f in files:
+        if f.endswith('.py') and f not in [current_script, 'off.py' , 'candle.py' , 'tester.py' , 'solid.py' ]:
+            py_files.append(os.path.join(root, f))
+
+if not py_files:
+    print(f"No Python scripts found in {ROOT_DIR}.")
+    exit(1)
+
+def fade_between(prev_script, next_script):
+    """
+    Optional: implement a fade by running a small helper
+    in each script that returns the LED state and interpolates.
+    This requires each effect to support getting/setting LED state.
+    """
+    # Placeholder: just wait briefly for now
+    time.sleep(0.5)
+
+try:
+    prev_script = None
+    while True:
+        py_files_copy = py_files[:]
+        random.shuffle(py_files_copy)
+
+        for script_to_run in py_files_copy:
+            print(f"Running {script_to_run} for {RUN_TIME} seconds...")
+
+            # Optional fade from previous effect
+            if prev_script:
+                fade_between(prev_script, script_to_run)
+
+            try:
+                subprocess.run([PYTHON, script_to_run], timeout=RUN_TIME)
+            except subprocess.TimeoutExpired:
+                print(f"Timeout reached for {script_to_run}, moving on.")
+
+                
+                apply_star(strip, star_count=15)
+
+
+            prev_script = script_to_run
+
+        time.sleep(0.5)
+
+except KeyboardInterrupt:
+    print("\nRun sequence stopped.")
