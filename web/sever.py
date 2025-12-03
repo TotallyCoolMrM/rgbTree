@@ -8,9 +8,9 @@ def lights_on():
     subprocess.Popen([
         "sudo",
         "/home/administrator/venv/bin/python3",
-        "/home/administrator/rgbTree/programs/codeFiles/retro.py"
+        "/home/administrator/rgbTree/programs/codeFiles/main.py"
     ])
-    return jsonify({"ran": "retro.py"})
+    return jsonify({"ran": "main.py"})
 
 @app.route("/off")
 def lights_off():
