@@ -6,7 +6,7 @@ NUM_LEDS = config.PIXEL_COUNT
 
 def all_off(strip):
     """Turn all LEDs off immediately."""
-    strip.fill((0, 0, 0))
+    strip.setPixelColor((0, 0, 0))
     strip.show()
 
 def fade_out(strip, steps=20, delay=0.05):

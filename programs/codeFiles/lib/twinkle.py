@@ -1,19 +1,19 @@
 import time
 import random
-import config
+
 from rpi_ws281x import PixelStrip, Color
 
 
 # ----- CONFIG -----
-LED_COUNT = config.PIXEL_COUNT
+LED_COUNT = 200
 LED_PIN = 12                # GPIO12 (PWM0)
 LED_FREQ_HZ = 800000
 LED_DMA = 10
-LED_BRIGHTNESS = int(config.BRIGHTNESS * 255)
+LED_BRIGHTNESS = int(.5 * 255)
 LED_INVERT = False
 LED_CHANNEL = 0
-DELAY = config.DELAY
-STAR_COLOR = config.STAR_COLOR
+DELAY =.1
+STAR_COLOR = (0,0,0)
 
 
 
@@ -38,10 +38,10 @@ colors = [RED, GREEN, OFF]
 # ----- TWINKLE LOOP -----
 try:
     while True:
-        for i in range(strip.numPixels() - config.STAR_COUNT):
+        for i in range(strip.numPixels() - 15):
             strip.setPixelColor(i, random.choice(colors))
 
-        for i in range(LED_COUNT - config.STAR_COUNT):
+        for i in range(200 - 15):
             strip.show()
             strip.setPixelColor(STAR_COLOR)
         
