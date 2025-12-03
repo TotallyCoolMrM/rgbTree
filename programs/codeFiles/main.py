@@ -6,7 +6,7 @@ from tree import strip
 
 ROOT_DIR = 'rgbTree/programs/codeFiles'
 
-IGNORE_FILES = {'main.py', 'tree.py', 'config.py'}
+IGNORE_FILES = {'main.py', 'tree.py', 'config.py','hwtest.py'}
 IGNORE_DIRS = {'lib'}   # <--- ignore the entire /lib folder
 
 student_files = []
