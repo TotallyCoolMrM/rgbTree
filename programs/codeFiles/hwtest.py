@@ -1,20 +1,21 @@
 # hardware_tester.py
-# Full hardware test for the RGB tree — NO dependencies on student code
+# Full hardware test for the RGB tree — independent of student code
 
 import time
 from rpi_ws281x import PixelStrip, Color
 
 # ===============================
-# STRIP CONFIG (match tree.py)
+# STRIP CONFIG
 # ===============================
-LED_COUNT = 300          # ← CHANGE IF NEEDED
+LED_COUNT = 300          # number of LEDs
 LED_PIN = 12
 LED_FREQ_HZ = 800000
 LED_DMA = 10
-LED_BRIGHTNESS = 128
+LED_BRIGHTNESS = 80      # lower to reduce flicker
 LED_INVERT = False
 LED_CHANNEL = 0
 
+# create standalone strip
 strip = PixelStrip(
     LED_COUNT,
     LED_PIN,
@@ -27,8 +28,13 @@ strip = PixelStrip(
 strip.begin()
 
 # ===============================
-# SIMPLE TEST EFFECTS
+# HELPER FUNCTIONS
 # ===============================
+def all_off():
+    """Turn all LEDs off immediately."""
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, 0)
+    strip.show()
 
 def solid(color, wait=1):
     """Fill entire strip with a single color."""
@@ -36,7 +42,6 @@ def solid(color, wait=1):
         strip.setPixelColor(i, color)
     strip.show()
     time.sleep(wait)
-
 
 def chase(wait=0.02):
     """Single pixel chase around strip."""
@@ -51,18 +56,8 @@ def chase(wait=0.02):
     strip.setPixelColor(strip.numPixels()-1, off)
     strip.show()
 
-
-def rainbow(wait=0.01):
-    """Full rainbow wheel test."""
-    for j in range(256):
-        for i in range(strip.numPixels()):
-            strip.setPixelColor(i, wheel((i + j) & 255))
-        strip.show()
-        time.sleep(wait)
-
-
 def wheel(pos):
-    """0–255 → rainbow RGB color."""
+    """Generate rainbow color from 0-255."""
     if pos < 85:
         return Color(pos*3, 255 - pos*3, 0)
     elif pos < 170:
@@ -72,12 +67,13 @@ def wheel(pos):
         pos -= 170
         return Color(0, pos*3, 255 - pos*3)
 
-
-def all_off():
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, 0)
-    strip.show()
-
+def rainbow(wait=0.01):
+    """Full rainbow wheel test."""
+    for j in range(256):
+        for i in range(strip.numPixels()):
+            strip.setPixelColor(i, wheel((i + j) & 255))
+        strip.show()
+        time.sleep(wait)
 
 # ===============================
 # RUN FULL HARDWARE TEST
@@ -86,10 +82,10 @@ if __name__ == "__main__":
     print("Running hardware test…")
 
     print("Solid red")
-    solid(Color(255,0,0))
+    solid(Color(0,255,0))
 
     print("Solid green")
-    solid(Color(0,255,0))
+    solid(Color(255,0,0))
 
     print("Solid blue")
     solid(Color(0,0,255))
@@ -104,6 +100,6 @@ if __name__ == "__main__":
     all_off()
     print("Done.")
 
-      # OPTIONAL: uncomment for infinite teal loop
+    # OPTIONAL: infinite teal loop for testing
     while True:
-        solid(Color(0,128,128), wait=0)
+     solid(Color(0,128,128), wait=0)
