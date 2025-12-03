@@ -1,5 +1,3 @@
-# PROPERTY OF ST. MARY'S ACADEMY | GLENS FALLS NY, 12809. CREATED BY TIMMY MCINERNEY
-
 # RGB Tree Classroom Project
 
 This project allows students to control an RGB LED tree using Python on a Raspberry Pi. Effects are modular, safe, and reusable. The setup uses a single shared LED strip object and allows students to create effects without
@@ -87,7 +85,7 @@ new_effect_run(strip)
 * Avoid running scripts without `sudo` — you’ll get `mmap() failed` errors.
 * Virtual environments keep dependencies separate and clean.
 * Students can experiment safely without affecting hardware-level code.
-
+# PROPERTY OF ST. MARY'S ACADEMY | GLENS FALLS NY, 12809. CREATED BY TIMMY MCINERNEY
 ---
 
 This setup is classroom-friendly, modular, and ensures all scripts share the same LED strip while preserving the star LEDs at the top.
