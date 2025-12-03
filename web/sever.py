@@ -8,7 +8,7 @@ def lights_on():
     subprocess.Popen([
         "sudo",
         "/home/administrator/venv/bin/python3",
-        "/home/administrator/tree/programs/codeFiles/retro.py"
+        "/home/administrator/rgbTree/programs/codeFiles/retro.py"
     ])
     return jsonify({"ran": "retro.py"})
 
