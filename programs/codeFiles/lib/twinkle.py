@@ -1,53 +1,36 @@
 import time
 import random
-
-from rpi_ws281x import PixelStrip, Color
-
-
-# ----- CONFIG -----
-LED_COUNT = 200
-LED_PIN = 12                # GPIO12 (PWM0)
-LED_FREQ_HZ = 800000
-LED_DMA = 10
-LED_BRIGHTNESS = int(.5 * 255)
-LED_INVERT = False
-LED_CHANNEL = 0
-DELAY =.1
-STAR_COLOR = (0,0,0)
+from rpi_ws281x import Color
 
 
-
-# ----- SETUP -----
-strip = PixelStrip(
-    LED_COUNT,
-    LED_PIN,
-    LED_FREQ_HZ,
-    LED_DMA,
-    LED_INVERT,
-    LED_BRIGHTNESS,
-    LED_CHANNEL
-)
-strip.begin()
-
-# ----- COLORS (GRB order!) -----
+# Colors in GRB order
 RED    = Color(0, 255, 0)
 GREEN  = Color(255, 0, 0)
 OFF    = Color(0, 0, 0)
-colors = [RED, GREEN, OFF]
+COLORS = [RED, GREEN, OFF]
 
-# ----- TWINKLE LOOP -----
-try:
-    while True:
-        for i in range(strip.numPixels() - 15):
-            strip.setPixelColor(i, random.choice(colors))
 
-        for i in range(200 - 15):
-            strip.show()
-            strip.setPixelColor(STAR_COLOR)
-        
-        time.sleep(DELAY)
+def run(strip, delay=0.3):
+    """
+    Run the twinkle effect on the LED strip.
 
-except KeyboardInterrupt:
+    Args:
+        strip (PixelStrip): The rpi_ws281x strip object.
+        delay (float): Delay between updates.
+    """
+    try:
+        for i in range(strip.numPixels()):
+            strip.setPixelColor(i, random.choice(COLORS))
 
+        strip.show()
+        time.sleep(delay)
+
+    except KeyboardInterrupt:
+        clear(strip)
+
+
+def clear(strip):
+    """Turn off all pixels."""
+    for i in range(strip.numPixels()):
+        strip.setPixelColor(i, OFF)
     strip.show()
-    print("Twinkle stopped.")
