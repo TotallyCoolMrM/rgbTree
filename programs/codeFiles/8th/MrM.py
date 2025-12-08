@@ -18,4 +18,6 @@ def run(strip):
     time.sleep(6)
     twinkle(strip, 1)
     twinkle_timer(strip, seconds=5)
+    solid(strip, (0,0,255))
+    time.sleep(5)
    

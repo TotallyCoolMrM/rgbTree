@@ -11,3 +11,4 @@ venv/
 
 # Other common stuff
 *.swp
+programs/codeFiles/lib/__pycache__/snowlights.cpython-312.pyc

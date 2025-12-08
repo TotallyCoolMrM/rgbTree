@@ -7,12 +7,11 @@ from tree import strip
 ROOT_DIR = 'rgbTree/programs/codeFiles'
 
 IGNORE_FILES = {'main.py', 'tree.py', 'config.py','hwtest.py'}
-IGNORE_DIRS = {'lib'}   # <--- ignore the entire /lib folder
-
+IGNORE_DIRS = {'lib'}   
 student_files = []
 
 for root, dirs, files in os.walk(ROOT_DIR):
-    # Remove ignored folders so os.walk won’t even enter them
+
     dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
 
     for f in files:
