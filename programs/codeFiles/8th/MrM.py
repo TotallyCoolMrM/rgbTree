@@ -3,7 +3,7 @@ from lib.retro import run as retro_run
 from lib.rainbowChase import run as rainbow_run
 from lib.snowlights import run as snowlights
 from lib.solid import run as solid 
-from lib.twinkle import run as twinkle
+from lib.twinkle import run as twinkle 
 
 def twinkle_timer (strip, seconds=5, delay=.4):
         end = time.time() + seconds

@@ -8,4 +8,4 @@ from lib.rainbowChase import run as rainbow_run
 #actual code, stuff that will edit the tree
 def run(strip):
     rainbow_run
-    time.sleep()
+    time.sleep(3)

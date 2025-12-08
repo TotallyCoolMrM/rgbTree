@@ -4,8 +4,8 @@ import time
 from lib.rainbowChase import run as rainbow_run
 #from lib.snowlights import run as snowlights
 #from lib.solid import run as solid 
-#from lib.twinkle import run as twinkle
-#actual code, stuff that will edit the tree
+#from lib.twinkle import run as twinkle  
+#actual code, stuff that will edit the tree 
 def run(strip):
-    rainbow_run
-    time.sleep()
+    rainbow_run 
+    time.sleep (3)

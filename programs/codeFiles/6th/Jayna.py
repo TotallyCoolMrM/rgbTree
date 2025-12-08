@@ -1,4 +1,4 @@
-#start of file, add all of your imports here #Uncomment the imports you want 
+start of file, add all of your imports here #Uncomment the imports you want 
 import time
 #from lib.retro import run as retro_run
 from lib.rainbowChase import run as rainbow_run
@@ -8,4 +8,4 @@ from lib.rainbowChase import run as rainbow_run
 #actual code, stuff that will edit the tree
 def run(strip):
     rainbow_run
-    time.sleep()
+  2    time.sleep(3)
