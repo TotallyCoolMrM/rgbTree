@@ -7,5 +7,5 @@ from lib.rainbowChase import run as rainbow_run
 #from lib.twinkle import run as twinkle
 #actual code, stuff that will edit the tree
 def run(strip):
-    rainbow_run
+    rainbow_run(strip)
     time.sleep(3)
