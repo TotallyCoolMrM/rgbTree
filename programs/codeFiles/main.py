@@ -1,14 +1,23 @@
 import os
+import sys
 import random
 import time
 import importlib.util
 from tree import strip
 
-ROOT_DIR = 'rgbTree/programs/codeFiles/8th'
 
-IGNORE_FILES = {'main.py', 'tree.py', 'config.py','hwtest.py','8th/Template.py'}
-IGNORE_DIRS = {'lib'}   
+IGNORE_FILES = {'main.py', 'tree.py', 'config.py', 'hwtest.py', '8th/Template.py'}
+IGNORE_DIRS = {'lib'}
 student_files = []
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        diffDir = sys.argv[1]
+    else:
+        diffDir = ""
+
+    ROOT_DIR = os.path.join('rgbTree/programs/codeFiles', diffDir)
+
 
 for root, dirs, files in os.walk(ROOT_DIR):
 
