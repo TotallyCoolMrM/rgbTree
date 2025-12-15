@@ -4,7 +4,7 @@ import time
 import importlib.util
 from tree import strip
 
-ROOT_DIR = 'rgbTree/programs/codeFiles'
+ROOT_DIR = 'rgbTree/programs/codeFiles/8th'
 
 IGNORE_FILES = {'main.py', 'tree.py', 'config.py','hwtest.py','8th/Template.py'}
 IGNORE_DIRS = {'lib'}   
