@@ -7,6 +7,5 @@ from lib.solid import run as solid
 #from lib.twinkle import run as twinkle
 #actual code, stuff that will edit the tree
 def run(strip):
-    rainbow_run(strip)
     solid(strip(0,255,255))
     time.sleep(10)

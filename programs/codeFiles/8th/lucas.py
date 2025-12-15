@@ -8,5 +8,4 @@ from lib.solid import run as solid
 #actual code, stuff that will edit the tree
 def run(strip):
     rainbow_run(strip)
-    solid(strip(137,252,172))
-    time.sleep(99)
+    solid(strip(207,137,240))
