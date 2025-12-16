@@ -9,7 +9,7 @@ __pycache__/
 venv/
 .env/
 
-# Other common stuff
+# Other stuff
 *.swp
 programs/codeFiles/lib/__pycache__/snowlights.cpython-312.pyc
 programs/codeFiles/8th/Template.py

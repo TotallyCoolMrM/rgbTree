@@ -1,4 +1,5 @@
 import time
+import tree
 from lib.retro import run as retro_run
 from lib.rainbowChase import run as rainbow_run
 from lib.snowlights import run as snowlights
@@ -20,4 +21,4 @@ def run(strip):
     twinkle_timer(strip, seconds=5)
     solid(strip, (0,0,255))
     time.sleep(5)
-   
+    tree.apply_star(strip)
