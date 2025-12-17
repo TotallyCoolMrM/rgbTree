@@ -10,4 +10,4 @@ def run(strip):
     time.sleep(3)
 
 
-soild(strip, (G,R,B))
+soild(strip, (50,50,50))

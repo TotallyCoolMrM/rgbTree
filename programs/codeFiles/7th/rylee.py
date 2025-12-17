@@ -10,4 +10,4 @@ def run(strip):
     time.sleep(3)
 
 
-solid(strip,(g,r,b,) 
+solid(strip,(g,r,b,))
